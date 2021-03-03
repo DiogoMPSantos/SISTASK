@@ -19,7 +19,7 @@
                             <label>Data Limite</label>
                             <input type="date" required class="form-control" v-model="tarefa.data_limite">
                         </div>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="submit" class="btn btn-success">Salvar</button>
                         <router-link :to="{name: 'home'}" class="btn btn-secondary mr-1">Cancelar
                         </router-link>
                     </form>

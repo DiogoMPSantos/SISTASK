@@ -11,3 +11,7 @@
     Seeds: php artisan db:seed
     Vuejs Front: npm run watch
     Api Laravel Start: php artisan serve
+
+## Acesso Inicial 
+    Ao executar o server acessar a rota inicial: 
+    http://localhost:8000/home

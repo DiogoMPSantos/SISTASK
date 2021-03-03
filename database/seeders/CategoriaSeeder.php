@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SkillSeeder extends Seeder
+class CategoriaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,9 +14,13 @@ class SkillSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('skills')->insert([
-            'name' => 'Laravel',
-            'candidate_id' => '1',
+        DB::table('categorias')->insert([
+            'nome' => 'Urgente',
+       ]);
+
+       DB::table('categoria_tarefa')->insert([
+        'tarefa_id' => 1,
+        'categoria_id' => 1,
        ]);
     }
 }

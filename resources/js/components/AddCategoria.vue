@@ -9,7 +9,7 @@
                             <label>Nome do Tipo de Tarefa</label>
                             <input type="text" required class="form-control" v-model="categoria.nome">
                         </div>
-                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="submit" class="btn btn-success">Salvar</button>
                         <router-link :to="{name: 'list'}" class="btn btn-secondary mr-1">Cancelar
                         </router-link>
                     </form>
