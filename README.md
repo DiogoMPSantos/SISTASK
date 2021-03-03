@@ -7,6 +7,11 @@
     Servidor XAMP
 ## Como executar
     Install packages: npm install
+    Obsergações!!!
+    Antes de Executar os comandos abaixo, certifique que exista um banco chamado sistask,
+    as configurações de usuario e senha estao informadas no arquivo .env caso seja necessário mudar de acordo com sua máquina.
+    cp .env.example .env  ----- Criar arquivo de configuração caso não exista
+    php artisan key:generate ----- Gerar chave da aplicação
     Database: php artisan migrate
     Seeds: php artisan db:seed
     Comando Reduzido Banco de Dados (Opcional): php artisan migrate:fresh --seed
