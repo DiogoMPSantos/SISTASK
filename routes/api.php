@@ -24,10 +24,10 @@ Route::group(['prefix' => 'tarefas'], function () {
     Route::get('edit/{id}', 'App\Http\Controllers\TarefaController@edit');
     Route::post('update/{id}', 'App\Http\Controllers\TarefaController@update');
     Route::delete('delete/{id}', 'App\Http\Controllers\TarefaController@destroy');
+    Route::post('finishTask/{id}/{status}', 'App\Http\Controllers\TarefaController@finishTask');
     Route::get('categorias', 'App\Http\Controllers\CategoriaController@index');
     Route::post('createCategoria', 'App\Http\Controllers\CategoriaController@store');
     Route::delete('deleteCategoria/{id}', 'App\Http\Controllers\CategoriaController@destroy');
     Route::get('editCategoria/{id}', 'App\Http\Controllers\CategoriaController@edit');
     Route::post('updateCategoria/{id}', 'App\Http\Controllers\CategoriaController@update');
-    
 });

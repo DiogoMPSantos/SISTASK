@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Boolean;
+
+use function PHPSTORM_META\type;
 
 class TarefaController extends Controller
 {
@@ -26,6 +30,25 @@ class TarefaController extends Controller
     public function create()
     {
         //
+    }
+
+     /**
+     * Show the form for creating a new resource.
+     */
+
+    public function finishTask($id, $status)
+    {   
+        if ($status == 'true') {
+            $status = true;
+        } else {
+            $status = false;
+        }
+        
+        $tarefa = DB::table('tarefas')
+            ->where('id', $id)
+            ->update(['status' => $status]);
+            
+        return response()->json('Tarefa finalizada com sucesso');
     }
 
     /**

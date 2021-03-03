@@ -6172,6 +6172,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -6510,11 +6512,29 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       });
+    },
+    finishTask: function finishTask(status, id) {
+      var _this3 = this;
+
+      this.$swal.fire({
+        title: 'Concluir a Tarefa?',
+        text: "Esta ação pode ser revertida",
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim, Concluir!',
+        cancelButtonText: 'Cancelar'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          _this3.axios.post("http://localhost:8000/api/tarefas/finishTask/".concat(id, "/").concat(status)).then(function (response) {});
+        }
+      });
     }
   },
   computed: {
     searchTask: function searchTask() {
-      var _this3 = this;
+      var _this4 = this;
 
       if (this.filtro) {
         if (this.filtro == "All") {
@@ -6522,7 +6542,7 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           return this.tarefas.filter(function (item) {
             return item.categorias.find(function (categoria) {
-              return categoria.nome === _this3.filtro;
+              return categoria.nome === _this4.filtro;
             });
           });
         }
@@ -46769,8 +46789,10 @@ var render = function() {
                     )
                   ],
                   1
-                ),
-                _vm._v(" "),
+                )
+              ]),
+              _vm._v(" "),
+              _c("ul", { staticClass: "navbar-nav" }, [
                 _c(
                   "li",
                   { staticClass: "nav-item" },
@@ -46781,7 +46803,11 @@ var render = function() {
                         staticClass: "nav-item nav-link",
                         attrs: { to: "/add" }
                       },
-                      [_vm._v("Criar Tarefa")]
+                      [
+                        _c("button", { staticClass: "btn btn-primary" }, [
+                          _vm._v(" Criar Tarefa ")
+                        ])
+                      ]
                     )
                   ],
                   1
@@ -47285,12 +47311,40 @@ var render = function() {
                   }
                 ],
                 staticClass: "form-control",
-                attrs: { type: "radio" },
-                domProps: { checked: _vm._q(tarefa.status, null) },
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(tarefa.status)
+                    ? _vm._i(tarefa.status, null) > -1
+                    : tarefa.status
+                },
                 on: {
-                  change: function($event) {
-                    return _vm.$set(tarefa, "status", null)
-                  }
+                  change: [
+                    function($event) {
+                      var $$a = tarefa.status,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            _vm.$set(tarefa, "status", $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            _vm.$set(
+                              tarefa,
+                              "status",
+                              $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                            )
+                        }
+                      } else {
+                        _vm.$set(tarefa, "status", $$c)
+                      }
+                    },
+                    function($event) {
+                      return _vm.finishTask(tarefa.status, tarefa.id)
+                    }
+                  ]
                 }
               })
             ]),

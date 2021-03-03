@@ -17,7 +17,6 @@ class TarefaSeeder extends Seeder
         DB::table('tarefas')->insert([
             'descricao' => 'Criar Sistema de Tarefas',
             'data_limite' => now(),
-            'status' => 'P',
        ]);
     }
 }

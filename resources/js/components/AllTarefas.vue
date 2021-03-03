@@ -22,7 +22,7 @@
             <tbody>
             <tr v-for="tarefa in searchTask" :key="tarefa.id">
                 <td>
-                    <input type="radio" class="form-control" v-model="tarefa.status">
+                    <input type="checkbox" class="form-control" v-model="tarefa.status" @change="finishTask(tarefa.status,tarefa.id)">
                 </td>
                 <td>{{ tarefa.data_limite }}</td>
                 <td>
@@ -93,6 +93,26 @@
                     }
                 })
                     
+            },
+
+            finishTask (status,id) {
+                this.$swal.fire({
+                title: 'Concluir a Tarefa?',
+                text: "Esta ação pode ser revertida",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, Concluir!',
+                cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.axios
+                            .post(`http://localhost:8000/api/tarefas/finishTask/${id}/${status}`)
+                            .then(response => {
+                            });
+                    }
+                })
             }
         },
         computed: {

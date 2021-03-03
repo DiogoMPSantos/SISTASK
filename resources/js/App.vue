@@ -16,8 +16,10 @@
                     <li class="nav-item">
                         <router-link to="/list" class="nav-item nav-link">Tipos de Tarefas</router-link>
                     </li>
+                </ul>
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <router-link to="/add" class="nav-item nav-link">Criar Tarefa</router-link>
+                        <router-link to="/add" class="nav-item nav-link"> <button class="btn btn-primary"> Criar Tarefa </button></router-link>
                     </li>
                 </ul>
             </div>

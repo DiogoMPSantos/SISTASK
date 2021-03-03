@@ -17,7 +17,7 @@ class CreateTarefasTable extends Migration
             $table->id();
             $table->string('descricao');
             $table->date('data_limite');
-            $table->enum('status',['C','P'])->default('P');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
