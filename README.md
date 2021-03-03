@@ -9,6 +9,7 @@
     Install packages: npm install
     Database: php artisan migrate
     Seeds: php artisan db:seed
+    Comando Reduzido Banco de Dados (Opcional): php artisan migrate:fresh --seed
     Vuejs Front: npm run watch
     Api Laravel Start: php artisan serve
 
